@@ -356,7 +356,12 @@ All keypoints are indexed by part id.  The parts and their ids are:
 | 15 | leftAnkle |
 | 16 | rightAnkle |
 ## Demo
-https://raw.githubusercontent.com/tensorflow/tfjs-models/master/posenet/demos/coco.gif
+This package contains running real time pose estimation in any browser using Tensorflow.js:<br>
+[Try the demo here!](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html)
+
+![](https://raw.githubusercontent.com/tensorflow/tfjs-models/master/posenet/demos/coco.gif)
+![keypoints](https://camo.githubusercontent.com/5a42c61a4e947dbc5f530b4e3b54f3ee97cc61a5/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a377144794c7049542d337334796c554c73726e7a38412e706e67)
+
 ![](https://camo.githubusercontent.com/36d3ddd2b7a162af115145d3fd6411020a570e32/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a7a5858775231366b707241574c50494f4b4372584c772e706e67)
 ![](https://camo.githubusercontent.com/01bc2d3caaf38e938686c9ac46392d94148e04e2/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a6d63616f76456f4c42745f416a306c7776312d7874412e706e67)
 ## References
