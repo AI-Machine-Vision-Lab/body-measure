@@ -6,3 +6,9 @@ Based on a recent “fit” study, almost one-third of diaper users wear the wro
 ## Objective
 This project is aimed to provide a reliable solution for the parents to for the correct diaper size and predict change of diaper size upon future based on our AI/ML algorithm and AR technology.
 ## Our solution
+use of convolution to detect keypoints:
+Branch 1 : S represents the set of keypoints
+Branch 2 : L represents the affinity vectors
+![Test Image 1](assets/cnn_diagram.png)
+## references
+https://github.com/CMU-Perceptual-Computing-Lab/openpose
