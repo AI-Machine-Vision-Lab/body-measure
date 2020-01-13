@@ -1,4 +1,4 @@
-# Diaper Size analysis
+# AR and Deep Learning based Automatic Human Body Measurement System
 Submission for **Hacking the diaper** hackathon by Kimberly-Clark<br>
 Team : Team Big Brain
 ## Problem statement
