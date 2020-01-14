@@ -333,9 +333,13 @@ This package contains running real time pose estimation in any browser using Ten
 - In this method, we will be moving those keypoints on the edge of the body. We will be working with the contour detected image.
 
 ![](res/thigh.png)
-In the above demostration,<br>
-- Location of the pose keypoint is known, based on that nearest detected contour is calculated. Nearest contour is marked as one keypoint and for another keypoint, a vector opposite to the current vector is marked and contour detected on that vector will be the second keypoint.<br>
+In the above demostration, there are two steps involved in the algorithm<br>
+- Location of the pose keypoint is known, based on that **nearest detected contour** is calculated. Nearest contour is marked as one keypoint and 
+- For another keypoint, a vector in the opposite angle to the current vector is marked and contour detected on that vector will be the second keypoint.<br>
 - These two keypoints will be required to measure the thigh length.
+### Resultant keypoints from edge keypoint detection algorithm will be send to the user's smartphone app and the distance between the keypoints shall be measured automatically using AR technology. 
+### User needs to capture image of the baby by keeping it against a plane surface (such as a wall) as AR measurements are only for plane surfaces.
+
 ## References
 1. https://github.com/CMU-Perceptual-Computing-Lab/openpose 
 2. Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields: Zhe Cao Tomas Simon Shih-En Wei Yaser Sheikh: The Robotics Institute, Carnegie Mellon University<br>https://arxiv.org/pdf/1611.08050.pdf
