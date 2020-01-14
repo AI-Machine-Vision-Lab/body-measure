@@ -72,34 +72,6 @@ A lot of developers are using pretrained models because it is very easy to use a
 **Since we did not have image dataset of baby pictures, we've used general human body dataset.<br>
 This model will work on most baby images but it won't on some of the images. We need baby images dataset which shall be trained and imported in our model. Though, it is very easy to train a model and implement in tensorflow.js.
 Process for loading a pretrained model is given.**
-### Loading a pre-trained PoseNet Model
-
-In the first step of pose estimation, an image is fed through a pre-trained model.  PoseNet **comes with a few different versions of the model,** corresponding to variances of MobileNet v1 architecture and ResNet50 architecture. To get started, a model must be loaded from a checkpoint:
-
-```javascript
-const net = await posenet.load();
-```
-By default, `posenet.load()` loads a faster and smaller model that is based on MobileNetV1 architecture and has a lower accuracy. If you want to load the larger and more accurate model, specify the architecture explicitly in `posenet.load()` using a `ModelConfig` dictionary:
-
-#### MobileNet (smaller, faster, less accurate)
-```javascript
-const net = await posenet.load({
-  architecture: 'MobileNetV1',
-  outputStride: 16,
-  inputResolution: { width: 640, height: 480 },
-  multiplier: 0.75
-});
-```
-
-#### ResNet (larger, slower, more accurate) \*\*new!\*\*
-```javascript
-const net = await posenet.load({
-  architecture: 'ResNet50',
-  outputStride: 32,
-  inputResolution: { width: 257, height: 200 },
-  quantBytes: 2
-});
-```
 
 ### Single-Person Pose Estimation
 Single pose estimation is the simpler and faster of the two algorithms. Its ideal use case is for when there is only one person in the image. The disadvantage is that if there are multiple persons in an image, keypoints from both persons will likely be estimated as being part of the same single pose—meaning, for example, that person #1’s left arm and person #2’s right knee might be conflated by the algorithm as belonging to the same pose. Both the MobileNetV1 and the ResNet architecture support single-person pose estimation. The method returns a **single pose**:
@@ -325,6 +297,10 @@ keypoints: Array(17)
 
 #### NOTE
 **By default,** PoseNet loads a MobileNetV1 architecture with a **`0.75`** multiplier.  This is recommended for computers with **mid-range/lower-end GPUs.**  A model with a **`0.50`** multiplier is recommended for **mobile.** The ResNet achitecture is recommended for computers with **even more powerful GPUs**.
+
+## Edge Keypoint recognition:
+This projects present an unique edge keypoint recognition based on the resultant keypoints from single pose estimation method. This edge keypoints will be required for getting end-to-end body measurements of the baby.<br>
+In this method, we will be moving those keypoints on the edge of the body. We will be working with the contour detected image.
 
 
 ## References
