@@ -161,7 +161,7 @@ kp = {
 }]
 }
 
-img = cv2.imread('assets/baby.jpeg')
+img = cv2.imread('../assets/baby.jpeg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 flag, thresh = cv2.threshold(gray, 120, 255, cv2.THRESH_BINARY)
 
