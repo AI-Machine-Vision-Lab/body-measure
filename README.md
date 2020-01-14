@@ -20,10 +20,6 @@ Or you can install it via npm for use in a TypeScript / ES6 project.
 ```sh
 npm install @tensorflow-models/posenet
 ```
-This project uses a standalone model called PoseNet, for running real-time pose estimation in the browser using TensorFlow.js which can be run on a back-end web server.<br>
-A lot of developers are using pretrained models because it is very easy to use and implement. Transfer learning is a huge use case for tensorflowjs. We can use pre-trained models and easily implement in tensorflow js.
-Since we did not have image dataset of baby pictures, we've used general human body dataset.<br>
-Though, it is very easy to train a model and implement in tensorflow.js.
 
 #### WHY TENSORFLOW.JS ?
 We're using tensorflow.js for machine learning on web server.<br>
@@ -50,8 +46,11 @@ A Pose — at the highest level, PoseNet will return a pose object that cont
 ## Usage
 
 Either a single pose or multiple poses can be estimated from an image.
-Each methodology has its own algorithm and set of parameters.
-
+Each methodology has its own algorithm and set of parameters.<br>
+This project uses a standalone model called PoseNet, for running real-time pose estimation in the browser using TensorFlow.js which can be run on a back-end web server.<br>
+A lot of developers are using pretrained models because it is very easy to use and implement. Transfer learning is a huge use case for tensorflowjs. We can use pre-trained models and easily implement in tensorflow js.
+Since we did not have image dataset of baby pictures, we've used general human body dataset.<br>
+Though, it is very easy to train a model and implement in tensorflow.js.
 ### Loading a pre-trained PoseNet Model
 
 In the first step of pose estimation, an image is fed through a pre-trained model.  PoseNet **comes with a few different versions of the model,** corresponding to variances of MobileNet v1 architecture and ResNet50 architecture. To get started, a model must be loaded from a checkpoint:
