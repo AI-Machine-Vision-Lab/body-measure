@@ -34,12 +34,13 @@ ML in the browser means
 We've used Layer APIs for easier implementaion.<br>
 ![text](https://camo.githubusercontent.com/ee6d9e0bb3d04dde245b5cb662fe40d19c5b6541/68747470733a2f2f73332d61702d736f7574682d312e616d617a6f6e6177732e636f6d2f61762d626c6f672d6d656469612f77702d636f6e74656e742f75706c6f6164732f323031382f30342f3056344859625a74323850485a5a3361442e706e67)
 ### PoseNet
-PoseNet can be used to estimate either a single pose or multiple poses, meaning there is a version of the algorithm that can detect only one person in an image/video and one version that can detect multiple persons in an image/video. Why are there two versions? The single person pose detector is faster and simpler but requires only one subject present in the image (more on that later)<br>
-For body measurement, we'll be using single pose estimation as we need to measure only a single body at a time.<br>
+PoseNet can be used to estimate either a single pose or multiple poses. The single person pose detector is faster and simpler but requires only one subject present in the image (more on that later)<br>
+**For body measurement, we'll be using single pose estimation as we need to measure only a single body at a time.**<br>
 At a high level pose estimation happens in two phases:<br>
-First, An input RGB image is fed through a convolutional neural network.<br>
+**First**, An input RGB image is fed through a convolutional neural network.<br>
 Either a single-pose or multi-pose decoding algorithm is used to decode poses, pose confidence scores, keypoint positions, and keypoint confidence scores from the model outputs <br>
-A Pose — at the highest level, PoseNet will return a pose object that contains a list of keypoints and an instance-level confidence score for each detected person. A Keypoint Position is 2-D x and y coordinates in the original input image where a keypoint has been detected.
+PoseNet will return a pose object that contains a list of keypoints and an instance-level confidence score for each detected person.<br>
+A Keypoint Position is 2-D x and y coordinates in the original input image where a keypoint has been detected.
 ### PoseNet currently detects 17 keypoints :
 All keypoints are indexed by part id.  The parts and their ids are:<br>
 
@@ -64,13 +65,13 @@ All keypoints are indexed by part id.  The parts and their ids are:<br>
 | 16 | rightAnkle |
 
 ## Usage
-
-Either a single pose or multiple poses can be estimated from an image.
-Each methodology has its own algorithm and set of parameters.<br>
 This project uses a standalone model called PoseNet, for running real-time pose estimation in the browser using TensorFlow.js which can be run on a back-end web server.<br>
+Using posenet, a single pose or multiple poses can be estimated from an image. **We will be using single person pose estimation as it will be faster, require less processing and we need measurement of only a single person at one time.**
+<br>
 A lot of developers are using pretrained models because it is very easy to use and implement. Transfer learning is a huge use case for tensorflowjs. We can use pre-trained models and easily implement in tensorflow js.
-Since we did not have image dataset of baby pictures, we've used general human body dataset.<br>
-Though, it is very easy to train a model and implement in tensorflow.js.
+**Since we did not have image dataset of baby pictures, we've used general human body dataset.<br>
+This model will work on most baby images but it won't on some of the images. We need baby images dataset which shall be trained and imported in our model. Though, it is very easy to train a model and implement in tensorflow.js.
+Process for loading a pretrained model is given.**
 ### Loading a pre-trained PoseNet Model
 
 In the first step of pose estimation, an image is fed through a pre-trained model.  PoseNet **comes with a few different versions of the model,** corresponding to variances of MobileNet v1 architecture and ResNet50 architecture. To get started, a model must be loaded from a checkpoint:
