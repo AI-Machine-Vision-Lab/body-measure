@@ -325,11 +325,9 @@ keypoints: Array(17)
 * **modelUrl** - An optional string that specifies custom url of the model. This is useful for local development or countries that don't have access to the model hosted on GCP.
 
 
+#### NOTE
 **By default,** PoseNet loads a MobileNetV1 architecture with a **`0.75`** multiplier.  This is recommended for computers with **mid-range/lower-end GPUs.**  A model with a **`0.50`** multiplier is recommended for **mobile.** The ResNet achitecture is recommended for computers with **even more powerful GPUs**.
 
-![keypoints](https://camo.githubusercontent.com/5a42c61a4e947dbc5f530b4e3b54f3ee97cc61a5/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a377144794c7049542d337334796c554c73726e7a38412e706e67)
-![](https://camo.githubusercontent.com/36d3ddd2b7a162af115145d3fd6411020a570e32/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a7a5858775231366b707241574c50494f4b4372584c772e706e67)
-![](https://camo.githubusercontent.com/01bc2d3caaf38e938686c9ac46392d94148e04e2/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a6d63616f76456f4c42745f416a306c7776312d7874412e706e67)
 
 ## References
 1. https://github.com/CMU-Perceptual-Computing-Lab/openpose 
