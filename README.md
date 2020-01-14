@@ -339,7 +339,10 @@ In the above demostration, there are two steps involved in the algorithm<br>
 - These two keypoints will be required to measure the thigh length.
 ### Resultant keypoints from edge keypoint detection algorithm will be send to the user's smartphone app and the distance between the keypoints shall be measured automatically using AR technology. 
 ### User needs to capture image of the baby by keeping it against a plane surface (such as a wall) as AR measurements are only for plane surfaces.
-
+### User need to give two poses seperately:
+- Front pose and
+- Side pose
+Based on the two poses, accurate measurements will be taken
 ## References
 1. https://github.com/CMU-Perceptual-Computing-Lab/openpose 
 2. Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields: Zhe Cao Tomas Simon Shih-En Wei Yaser Sheikh: The Robotics Institute, Carnegie Mellon University<br>https://arxiv.org/pdf/1611.08050.pdf
