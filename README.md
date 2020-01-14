@@ -47,13 +47,10 @@ A Pose — at the highest level, PoseNet will return a pose object that cont
 ##### PoseNet currently detects 17 keypoints illustrated in the following diagram:
 ![keypoints](https://camo.githubusercontent.com/5a42c61a4e947dbc5f530b4e3b54f3ee97cc61a5/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a377144794c7049542d337334796c554c73726e7a38412e706e67)
 
-
-
 ## Usage
 
 Either a single pose or multiple poses can be estimated from an image.
 Each methodology has its own algorithm and set of parameters.
-
 
 ### Loading a pre-trained PoseNet Model
 
@@ -62,9 +59,7 @@ In the first step of pose estimation, an image is fed through a pre-trained mode
 ```javascript
 const net = await posenet.load();
 ```
-
 By default, `posenet.load()` loads a faster and smaller model that is based on MobileNetV1 architecture and has a lower accuracy. If you want to load the larger and more accurate model, specify the architecture explicitly in `posenet.load()` using a `ModelConfig` dictionary:
-
 
 #### MobileNet (smaller, faster, less accurate)
 ```javascript
@@ -86,30 +81,7 @@ const net = await posenet.load({
 });
 ```
 
-#### Config params in posenet.load()
-
- * **architecture** - Can be either `MobileNetV1` or `ResNet50`. It determines which PoseNet architecture to load.
-
- * **outputStride** - Can be one of `8`, `16`, `32` (Stride `16`, `32` are supported for the ResNet architecture and stride `8`, `16`, `32` are supported for the MobileNetV1 architecture). It specifies the output stride of the PoseNet model. The smaller the value, the larger the output resolution, and more accurate the model at the cost of speed. Set this to a larger value to increase speed at the cost of accuracy.
-
-* **inputResolution** - A `number` or an `Object` of type `{width: number, height: number}`. Defaults to `257.` It specifies the size the image is resized and padded to before it is fed into the PoseNet model. The larger the value, the more accurate the model at the cost of speed. Set this to a smaller value to increase speed at the cost of accuracy. If a number is provided, the image will be resized and padded to be a square with the same width and height.  If `width` and `height` are provided, the image will be resized and padded to the specified width and height.
-
- * **multiplier** - Can be one of `1.01`, `1.0`, `0.75`, or `0.50` (The value is used *only* by the MobileNetV1 architecture and not by the ResNet architecture). It is the float multiplier for the depth (number of channels) for all convolution ops. The larger the value, the larger the size of the layers, and more accurate the model at the cost of speed. Set this to a smaller value to increase speed at the cost of accuracy.
-
- * **quantBytes** - This argument controls the bytes used for weight quantization. The available options are:
-
-   - `4`. 4 bytes per float (no quantization). Leads to highest accuracy and original model size (~90MB).
-
-   - `2`. 2 bytes per float. Leads to slightly lower accuracy and 2x model size reduction (~45MB).
-   - `1`. 1 byte per float. Leads to lower accuracy and 4x model size reduction (~22MB).
-
-* **modelUrl** - An optional string that specifies custom url of the model. This is useful for local development or countries that don't have access to the model hosted on GCP.
-
-
-**By default,** PoseNet loads a MobileNetV1 architecture with a **`0.75`** multiplier.  This is recommended for computers with **mid-range/lower-end GPUs.**  A model with a **`0.50`** multiplier is recommended for **mobile.** The ResNet achitecture is recommended for computers with **even more powerful GPUs**.
-
 ### Single-Person Pose Estimation
-
 Single pose estimation is the simpler and faster of the two algorithms. Its ideal use case is for when there is only one person in the image. The disadvantage is that if there are multiple persons in an image, keypoints from both persons will likely be estimated as being part of the same single pose—meaning, for example, that person #1’s left arm and person #2’s right knee might be conflated by the algorithm as belonging to the same pose. Both the MobileNetV1 and the ResNet architecture support single-person pose estimation. The method returns a **single pose**:
 
 ```javascript
@@ -119,7 +91,6 @@ const pose = await net.estimateSinglePose(image, {
   flipHorizontal: false
 });
 ```
-
 #### Params in estimateSinglePose()
 
 * **image** - ImageData|HTMLImageElement|HTMLCanvasElement|HTMLVideoElement
@@ -131,7 +102,7 @@ const pose = await net.estimateSinglePose(image, {
 
 It returns a `Promise` that resolves with a  **single** `pose`. The `pose` has a confidence score and an array of keypoints indexed by part id, each with a score and position.
 
-#### Example Usage
+#### Usage
 
 ##### via Script Tag
 
@@ -188,151 +159,6 @@ console.log(pose);
 
 ```
 
-which would produce the output:
-
-```json
-{
-  "score": 0.32371445304906,
-  "keypoints": [
-    {
-      "position": {
-        "y": 76.291801452637,
-        "x": 253.36747741699
-      },
-      "part": "nose",
-      "score": 0.99539834260941
-    },
-    {
-      "position": {
-        "y": 71.10383605957,
-        "x": 253.54365539551
-      },
-      "part": "leftEye",
-      "score": 0.98781454563141
-    },
-    {
-      "position": {
-        "y": 71.839515686035,
-        "x": 246.00454711914
-      },
-      "part": "rightEye",
-      "score": 0.99528175592422
-    },
-    {
-      "position": {
-        "y": 72.848854064941,
-        "x": 263.08151245117
-      },
-      "part": "leftEar",
-      "score": 0.84029853343964
-    },
-    {
-      "position": {
-        "y": 79.956565856934,
-        "x": 234.26812744141
-      },
-      "part": "rightEar",
-      "score": 0.92544466257095
-    },
-    {
-      "position": {
-        "y": 98.34538269043,
-        "x": 399.64068603516
-      },
-      "part": "leftShoulder",
-      "score": 0.99559044837952
-    },
-    {
-      "position": {
-        "y": 95.082359313965,
-        "x": 458.21868896484
-      },
-      "part": "rightShoulder",
-      "score": 0.99583911895752
-    },
-    {
-      "position": {
-        "y": 94.626205444336,
-        "x": 163.94561767578
-      },
-      "part": "leftElbow",
-      "score": 0.9518963098526
-    },
-    {
-      "position": {
-        "y": 150.2349395752,
-        "x": 245.06030273438
-      },
-      "part": "rightElbow",
-      "score": 0.98052614927292
-    },
-    {
-      "position": {
-        "y": 113.9603729248,
-        "x": 393.19735717773
-      },
-      "part": "leftWrist",
-      "score": 0.94009721279144
-    },
-    {
-      "position": {
-        "y": 186.47859191895,
-        "x": 257.98034667969
-      },
-      "part": "rightWrist",
-      "score": 0.98029226064682
-    },
-    {
-      "position": {
-        "y": 208.5266418457,
-        "x": 284.46710205078
-      },
-      "part": "leftHip",
-      "score": 0.97870296239853
-    },
-    {
-      "position": {
-        "y": 209.9910736084,
-        "x": 243.31219482422
-      },
-      "part": "rightHip",
-      "score": 0.97424703836441
-    },
-    {
-      "position": {
-        "y": 281.61965942383,
-        "x": 310.93188476562
-      },
-      "part": "leftKnee",
-      "score": 0.98368924856186
-    },
-    {
-      "position": {
-        "y": 282.80120849609,
-        "x": 203.81164550781
-      },
-      "part": "rightKnee",
-      "score": 0.96947449445724
-    },
-    {
-      "position": {
-        "y": 360.62716674805,
-        "x": 292.21047973633
-      },
-      "part": "leftAnkle",
-      "score": 0.8883239030838
-    },
-    {
-      "position": {
-        "y": 347.41177368164,
-        "x": 203.88229370117
-      },
-      "part": "rightAnkle",
-      "score": 0.8255187869072
-    }
-  ]
-}
-```
 ### Keypoints
 All keypoints are indexed by part id.  The parts and their ids are:
 
@@ -359,11 +185,148 @@ All keypoints are indexed by part id.  The parts and their ids are:
 This package contains running real time pose estimation in any browser using Tensorflow.js:<br>
 [Try the demo here!](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html)
 
-![](https://raw.githubusercontent.com/tensorflow/tfjs-models/master/posenet/demos/coco.gif)
-![keypoints](https://camo.githubusercontent.com/5a42c61a4e947dbc5f530b4e3b54f3ee97cc61a5/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a377144794c7049542d337334796c554c73726e7a38412e706e67)
+![](assets/baby.jpeg)
 
+```
+(index):25 
+{
+"score": 0.9497430254431332, 
+keypoints: Array(17)
+}
+
+"score": 0.9497430254431332
+keypoints: Array(17)
+
+"score": 0.9993507266044617
+"part": "nose"
+"position": 
+"x": 89.16390617162801 
+"y": 73.60070373297664
+
+"score": 0.998756289482116
+"part": "leftEye"
+"position": 
+"x": 81.45216696178869
+"y": 68.22363708733585
+
+"score": 0.9989827275276184
+"part": "rightEye"
+"position": 
+"x": 96.01414739111519
+"y": 67.66566532595148
+
+"score": 0.9344170093536377
+"part": "leftEar"
+"position": 
+"x": 71.82985654600864
+"y": 69.29333579215557
+
+"score": 0.8185552954673767
+"part": "rightEar"
+"position": 
+"x": 106.03497382731754
+"y": 67.98321141343172
+
+"score": 0.9925171732902527
+"part": "leftShoulder"
+"position": 
+"x": 67.96828944581029
+"y": 92.67281142654122
+
+"score": 0.995404839515686
+"part": "rightShoulder"
+"position": 
+"x": 109.76879357363929
+"y": 93.22251256801738
+
+"score": 0.9309068322181702
+"part": "leftElbow"
+"position": 
+"x": 43.98161743401556
+"y": 114.15831925804048
+
+"score": 0.8832974433898926
+"part": "rightElbow"
+"position": 
+"x": 138.69028897415342
+"y": 114.38970543531127
+
+"score": 0.8918079733848572
+"part": "leftWrist"
+"position": 
+"x": 27.378865935923073
+"y": 121.017256562348
+
+"score": 0.9662160873413086
+"part": "rightWrist"
+"position": 
+"x": 155.04230897064804
+"y": 125.30266787755349
+
+"score": 0.9975414276123047
+"part": "leftHip"
+"position": 
+"x": 74.92388844768362
+"y": 160.69435446178866
+
+"score": 0.9967007040977478
+"part": "rightHip"
+"position": 
+"x": 102.59964277215506
+"y": 159.6582078748176
+
+"score": 0.967958927154541
+"part": "leftKnee"
+"position": 
+"x": 71.08008952456228
+"y": 200.92868433852138
+
+"score": 0.9682652950286865
+"part": "rightKnee"
+"position": 
+"x": 105.99922892648424
+"y": 199.09481775899803
+
+"score": 0.8711856603622437
+"part": "leftAnkle"
+"position": 
+"x": 71.58785897934021
+"y": 243.5953744376216
+
+"score": 0.9337670207023621
+"part": "rightAnkle"
+"position": 
+"x": 115.09406639722536
+"y": 236.8689249832806
+```
+
+#### Config params in posenet.load()
+
+ * **architecture** - Can be either `MobileNetV1` or `ResNet50`. It determines which PoseNet architecture to load.
+
+ * **outputStride** - Can be one of `8`, `16`, `32` (Stride `16`, `32` are supported for the ResNet architecture and stride `8`, `16`, `32` are supported for the MobileNetV1 architecture). It specifies the output stride of the PoseNet model. The smaller the value, the larger the output resolution, and more accurate the model at the cost of speed. Set this to a larger value to increase speed at the cost of accuracy.
+
+* **inputResolution** - A `number` or an `Object` of type `{width: number, height: number}`. Defaults to `257.` It specifies the size the image is resized and padded to before it is fed into the PoseNet model. The larger the value, the more accurate the model at the cost of speed. Set this to a smaller value to increase speed at the cost of accuracy. If a number is provided, the image will be resized and padded to be a square with the same width and height.  If `width` and `height` are provided, the image will be resized and padded to the specified width and height.
+
+ * **multiplier** - Can be one of `1.01`, `1.0`, `0.75`, or `0.50` (The value is used *only* by the MobileNetV1 architecture and not by the ResNet architecture). It is the float multiplier for the depth (number of channels) for all convolution ops. The larger the value, the larger the size of the layers, and more accurate the model at the cost of speed. Set this to a smaller value to increase speed at the cost of accuracy.
+
+ * **quantBytes** - This argument controls the bytes used for weight quantization. The available options are:
+
+   - `4`. 4 bytes per float (no quantization). Leads to highest accuracy and original model size (~90MB).
+
+   - `2`. 2 bytes per float. Leads to slightly lower accuracy and 2x model size reduction (~45MB).
+   - `1`. 1 byte per float. Leads to lower accuracy and 4x model size reduction (~22MB).
+
+* **modelUrl** - An optional string that specifies custom url of the model. This is useful for local development or countries that don't have access to the model hosted on GCP.
+
+
+**By default,** PoseNet loads a MobileNetV1 architecture with a **`0.75`** multiplier.  This is recommended for computers with **mid-range/lower-end GPUs.**  A model with a **`0.50`** multiplier is recommended for **mobile.** The ResNet achitecture is recommended for computers with **even more powerful GPUs**.
+
+![keypoints](https://camo.githubusercontent.com/5a42c61a4e947dbc5f530b4e3b54f3ee97cc61a5/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a377144794c7049542d337334796c554c73726e7a38412e706e67)
 ![](https://camo.githubusercontent.com/36d3ddd2b7a162af115145d3fd6411020a570e32/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a7a5858775231366b707241574c50494f4b4372584c772e706e67)
 ![](https://camo.githubusercontent.com/01bc2d3caaf38e938686c9ac46392d94148e04e2/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a6d63616f76456f4c42745f416a306c7776312d7874412e706e67)
+## Contour detection
+![](assets/canny.bmp)
 ## References
 1. https://github.com/CMU-Perceptual-Computing-Lab/openpose 
 2. Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields: Zhe Cao Tomas Simon Shih-En Wei Yaser Sheikh: The Robotics Institute, Carnegie Mellon University<br>https://arxiv.org/pdf/1611.08050.pdf
