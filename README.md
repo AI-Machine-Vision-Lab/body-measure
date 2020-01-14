@@ -40,8 +40,28 @@ At a high level pose estimation happens in two phases:<br>
 First, An input RGB image is fed through a convolutional neural network.<br>
 Either a single-pose or multi-pose decoding algorithm is used to decode poses, pose confidence scores, keypoint positions, and keypoint confidence scores from the model outputs <br>
 A Pose — at the highest level, PoseNet will return a pose object that contains a list of keypoints and an instance-level confidence score for each detected person. A Keypoint Position is 2-D x and y coordinates in the original input image where a keypoint has been detected.
-##### PoseNet currently detects 17 keypoints illustrated in the following diagram:
-![keypoints](https://camo.githubusercontent.com/5a42c61a4e947dbc5f530b4e3b54f3ee97cc61a5/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a377144794c7049542d337334796c554c73726e7a38412e706e67)
+### PoseNet currently detects 17 keypoints :
+All keypoints are indexed by part id.  The parts and their ids are:<br>
+
+| Id | Part |
+| -- | -- |
+| 0 | nose |
+| 1 | leftEye |
+| 2 | rightEye |
+| 3 | leftEar |
+| 4 | rightEar |
+| 5 | leftShoulder |
+| 6 | rightShoulder |
+| 7 | leftElbow |
+| 8 | rightElbow |
+| 9 | leftWrist |
+| 10 | rightWrist |
+| 11 | leftHip |
+| 12 | rightHip |
+| 13 | leftKnee |
+| 14 | rightKnee |
+| 15 | leftAnkle |
+| 16 | rightAnkle |
 
 ## Usage
 
@@ -158,28 +178,6 @@ console.log(pose);
 
 ```
 
-### Keypoints
-All keypoints are indexed by part id.  The parts and their ids are:
-
-| Id | Part |
-| -- | -- |
-| 0 | nose |
-| 1 | leftEye |
-| 2 | rightEye |
-| 3 | leftEar |
-| 4 | rightEar |
-| 5 | leftShoulder |
-| 6 | rightShoulder |
-| 7 | leftElbow |
-| 8 | rightElbow |
-| 9 | leftWrist |
-| 10 | rightWrist |
-| 11 | leftHip |
-| 12 | rightHip |
-| 13 | leftKnee |
-| 14 | rightKnee |
-| 15 | leftAnkle |
-| 16 | rightAnkle |
 ## Demo
 This package contains running real time pose estimation in any browser using Tensorflow.js:<br>
 [Try the demo here!](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html)
