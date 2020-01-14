@@ -184,9 +184,10 @@ All keypoints are indexed by part id.  The parts and their ids are:
 ## Demo
 This package contains running real time pose estimation in any browser using Tensorflow.js:<br>
 [Try the demo here!](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html)
-
-![](assets/baby.jpeg)
-
+### Example
+![](assets/baby.jpeg)<br>
+**Result from SINGLE POSE ESTIMATION**
+![](res/console_log.png)
 ```
 (index):25 
 {
@@ -299,9 +300,13 @@ keypoints: Array(17)
 "x": 115.09406639722536
 "y": 236.8689249832806
 ```
+### Contour detection
+![](assets/baby.jpeg) | ![](res/canny.bmp)
 
+##  POSE ESTIMATION OVER CONTOUR
+![](res/canny_keypoints.png)
 #### Config params in posenet.load()
-
+![](res/console.png)
  * **architecture** - Can be either `MobileNetV1` or `ResNet50`. It determines which PoseNet architecture to load.
 
  * **outputStride** - Can be one of `8`, `16`, `32` (Stride `16`, `32` are supported for the ResNet architecture and stride `8`, `16`, `32` are supported for the MobileNetV1 architecture). It specifies the output stride of the PoseNet model. The smaller the value, the larger the output resolution, and more accurate the model at the cost of speed. Set this to a larger value to increase speed at the cost of accuracy.
@@ -325,8 +330,7 @@ keypoints: Array(17)
 ![keypoints](https://camo.githubusercontent.com/5a42c61a4e947dbc5f530b4e3b54f3ee97cc61a5/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a377144794c7049542d337334796c554c73726e7a38412e706e67)
 ![](https://camo.githubusercontent.com/36d3ddd2b7a162af115145d3fd6411020a570e32/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a7a5858775231366b707241574c50494f4b4372584c772e706e67)
 ![](https://camo.githubusercontent.com/01bc2d3caaf38e938686c9ac46392d94148e04e2/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a6d63616f76456f4c42745f416a306c7776312d7874412e706e67)
-## Contour detection
-![](assets/canny.bmp)
+
 ## References
 1. https://github.com/CMU-Perceptual-Computing-Lab/openpose 
 2. Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields: Zhe Cao Tomas Simon Shih-En Wei Yaser Sheikh: The Robotics Institute, Carnegie Mellon University<br>https://arxiv.org/pdf/1611.08050.pdf
