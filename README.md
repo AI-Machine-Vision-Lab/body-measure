@@ -358,6 +358,12 @@ In the above demostration, there are two steps involved in the algorithm<br>
 - Location of the pose keypoint is known, based on that **nearest detected contour** is calculated. Nearest contour is marked as one keypoint and 
 - For another keypoint, a vector in the opposite angle to the current vector is marked and contour detected on that vector will be the second keypoint.<br>
 - These two keypoints will be required to measure the thigh length.
+## Smartphone app
+### iOS app
+demo: https://youtu.be/IbV_1hZTjYY
+
+### Android app
+demo: https://youtu.be/oZ6-cmX-Xk0
 ### Resultant keypoints from edge keypoint detection algorithm will be send to the user's smartphone app and the distance between the keypoints shall be measured automatically using AR technology. 
 ### User needs to capture image of the baby by keeping it against a plane surface (such as a wall) as AR measurements are only for plane surfaces.
 ### User need to give two poses seperately:
