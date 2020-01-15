@@ -156,7 +156,13 @@ This package contains running real time pose estimation in any browser using Ten
 [Try the demo here!](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html)
 ### Example
 ![](assets/baby.jpeg)<br>
-**Result from SINGLE POSE ESTIMATION**
+- To get single pose estimation, run the following script:<br>
+```
+python -m http-server 8000
+```
+- Open http://0.0.0.0:8000/ in your browser <br>
+- Read the result from Console log <br>
+- **Result from SINGLE POSE ESTIMATION**
 ![](res/console_log.png)
 ```
 {
