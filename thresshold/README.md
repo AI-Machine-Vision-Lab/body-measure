@@ -173,7 +173,7 @@ flag, thresh = cv2.threshold(gray, 120, 255, cv2.THRESH_BINARY)
 img2, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 contours = sorted(contours, key=cv2.contourArea, reverse=True) 
 ```
-Selecting long perimeters only
+- Selecting long perimeters only
 ```
 perimeters = [cv2.arcLength(contours[i],True) for i in range(len(contours))]
 listindex=[i for i in range(15) if perimeters[i]>perimeters[0]/2]
@@ -185,5 +185,16 @@ cv2.drawContours(stencil, [contours[listindex[card_number]]], 0, (255, 255, 255)
 res = cv2.bitwise_and(img, stencil)
 canny = cv2.Canny(res, 100, 200)
 ```
-
+Run the following script to see the result
+```
+python thresholding.py
+```
 ![](../assets/baby.jpeg) | ![](../res/canny.bmp)
+
+## Estimated pose over contour
+Run the following script
+```
+python thres.py
+```
+Result:<br>
+![](../res/canny_keypoints.png)
