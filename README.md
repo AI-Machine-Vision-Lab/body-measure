@@ -370,6 +370,10 @@ demo: https://youtu.be/oZ6-cmX-Xk0
 - Front pose and
 - Side pose
 Based on the two poses, accurate measurements will be taken
+## Why not client-side processing?
+Images are captured on the client side device of the user and send on to our server where the analysis and processing is done.
+The processing required for pose estimation is fairly complicated and require processing power. All devices are not capable of such high processing so remote side processing is better.
+ 
 ## References
 1. https://github.com/CMU-Perceptual-Computing-Lab/openpose 
 2. Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields: Zhe Cao Tomas Simon Shih-En Wei Yaser Sheikh: The Robotics Institute, Carnegie Mellon University<br>https://arxiv.org/pdf/1611.08050.pdf
