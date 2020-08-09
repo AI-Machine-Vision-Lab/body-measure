@@ -1,6 +1,7 @@
 # AR and Deep Learning based Automatic Human Body Measurement System
 
-## Problem statement
+#### Join the development group: [Discord invite](https://discord.gg/TU8q5m) <br>
+
 Based on a recent “fit” study, almost one-third of diaper users wear the wrong diaper size, while four out of ten mothers state that diaper fit is a significant concern at every stage of diapering. Despite disposable diapers being around for the last half-century, ensuring proper fit of diapers for babies can be confusing for parents. When babies wear the wrong diaper size, the chances of leakage and blowouts increase. Kimberly-Clark continues to partner with parents to not just provide a diaper that fits their baby perfectly, but also provide the technology and tools needed to reduce diaper fit challenges.<br>
 ## Objective
 This project is aimed to provide a reliable solution for the parents to know the correct baby's body measurements to get right size diaper and clothing and get future size prediction.
